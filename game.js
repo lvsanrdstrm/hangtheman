@@ -36,4 +36,30 @@ export default class Game {
     // goto 10
     // this.runRound()
   }
+
+
+
+
+  checkWin() {
+    if (!this.foundWord.letters.includes('*')) {
+      print("Congratulations, you barely survived this time \n" + this.foundWord.asString)
+    } else {
+      // goto 20
+      this.guessWord()
+    }
+  }
+
+  checkLoose() {
+    if (this.gallows.stages.length == 0) {
+      print("Wonderful, you got to hang! \n" + "The word was " + this.secretWord.asString)
+    } else {
+      // goto 20
+      this.guessWord()
+    }
+  }
+
+  lettersLeft() {
+    let letterseLeftCount = this.foundWord.letters.filter(element => /[\*]+/g.test(element))
+    return letterseLeftCount.length
+  }
 }
