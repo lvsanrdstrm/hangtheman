@@ -37,8 +37,28 @@ export default class Game {
     // this.runRound()
   }
 
-
-
+  guessWord() {
+    let letter = new Question("Guess a letter: ")
+    print("You guessed " + letter)
+    // find if the letter is in the secret word
+    if (this.secretWord.isLetterInSecretWord(letter)) {
+      //  (b)  found            store  x in used chars,  b _ _ _
+      //  (s)  found            store  s in used chars,  b _ s s 
+      let positions = this.secretWord.getLetterPositions(letter)
+      this.foundWord.applyFoundLetter(letter, positions)
+      //här vill jag lägga in nuvarande gallow
+      print("You found \n" + this.foundWord.asString)
+      // check if word i complete (no empty slots)? exit to win round
+      print('Good job, but never lower your guard. You only have ' + this.gallows.stages.length + ' tries left and still ' + this.lettersLeft() + ' letters to find...')
+      this.checkWin()
+    } else {
+      //  (x)  not found        store  x in used chars, add part to gallows
+      print(this.gallows.step())
+      print('You are closing up on a certain death. Only ' + this.gallows.stages.length + ' tries left and still ' + this.lettersLeft() + ' letters to find... Do you enjoy living? Try harder.')
+      this.checkLoose()
+      // check if gallows is done? exit to loose round
+    }
+  }
 
   checkWin() {
     if (!this.foundWord.letters.includes('*')) {
