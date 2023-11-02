@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs'
 import PromptSync from 'prompt-sync'
-import User from "./user.js";
+import User from "./user.js"
 
 const prompt = PromptSync({ sigint: true })
 
