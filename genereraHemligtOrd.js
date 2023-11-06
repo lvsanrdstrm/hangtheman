@@ -1,17 +1,27 @@
 import { readFileSync } from 'node:fs'
 
-let hemligaOrden = readFileSync("data/ordlista.csv", "utf8")
+export default class HemligtOrd {
 
-hemligaOrden = hemligaOrden.trim().split("\r\n")
+  hemligaOrden = readFileSync("data/ordlista.csv", "utf8")
+  hemligaOrden = hemligaOrden.trim().split("\r\n")
 
-let ordListan = []
+  ordListan = []
 
-for (let orden of hemligaOrden) {
-  ordListan.push(orden)
-}
+  get odlista() {
+    for (let orden of hemligaOrden) {
+      ordListan.push(orden)
+    }
+    return this.ordListan
+  }
 
-getSecretWord() {
-  let generatedWordIndex = Math.floor(Math.random() * ordListan.length)
-  let generatedWord = ordListan[generatedWordIndex]
-  return generatedWord
+  constructor(hemligtOrd) {
+    this.getSecretWord
+  }
+
+  getSecretWord() {
+    let generatedWordIndex = Math.floor(Math.random() * ordListan.length)
+    let generatedWord = ordListan[generatedWordIndex]
+    return generatedWord
+  }
+
 }
