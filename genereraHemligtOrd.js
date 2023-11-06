@@ -10,9 +10,6 @@ for (let orden of hemligaOrden) {
   ordListan.push(orden)
 }
 
-/* här ska du skriva kod som generar hemligt ord från ordlistan
-kommer motsvara skriva in ord att gissa i förra hangman*/
-
 getSecretWord() {
   let generatedWordIndex = Math.floor(Math.random() * ordListan.length)
   let generatedWord = ordListan[generatedWordIndex]
