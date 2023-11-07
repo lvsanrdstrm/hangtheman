@@ -2,10 +2,13 @@ import Module from "node:module"
 const require = Module.createRequire(import.meta.url)
 const prompt = require('prompt-sync')({ sigint: true })
 
+const print = console.log
+
 export default class Question {
 
   constructor(questionText) {
-    this.questionText = this.askQuestion()
+    this.questionText = questionText
+    this.answer = this.askQuestion()
     /* ersatt detta från original
     this.answer = prompt(questionText).toUpperCase() */
   }
@@ -15,7 +18,7 @@ export default class Question {
     do {
       guessedLetter = prompt(this.questionText).trim().toUpperCase()
       if (!this.isOnlyLetters(guessedLetter)) {
-        console.log("Please enter letters only.")
+        print("Please enter letters only.")
       }
       if (!this.isOnlyOneLetter(guessedLetter)) {
         print("Please enter only one letter.")

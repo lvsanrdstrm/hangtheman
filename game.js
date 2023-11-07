@@ -27,8 +27,8 @@ export default class Game {
     // create a new gallows
     this.gallows = new Gallows()
     // 10. ask for secret word                         bass
-    this.currentWord = new HemligtOrd()
-    this.secretWord = new SecretWord(this.currentWord) //jag tänker att inputen på något sätt här ska vara import från genHeOrd
+    // this.currentWord = new HemligtOrd() testade lägga new HemligtOrd direkt i new secretWord()
+    this.secretWord = new SecretWord("potatis") //jag tänker att inputen på något sätt här ska vara import från genHeOrd
     print("The secret word has " + this.secretWord.length + " letters")
     // process secret word into chars                  b a s s
     // store found word as empty positions for chars   _ _ _ _

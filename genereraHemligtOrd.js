@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs'
 let hemligaOrden = readFileSync("data/ordlista.csv", "utf8")
 hemligaOrden = hemligaOrden.trim().split(",")
 
+
 export default class HemligtOrd {
 
   constructor(hemligtOrd) {
